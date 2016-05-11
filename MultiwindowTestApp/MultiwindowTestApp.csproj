@@ -98,13 +98,25 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AgendaAppointmentControl.xaml.cs">
+      <DependentUpon>AgendaAppointmentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AgendaDayView.xaml.cs">
+      <DependentUpon>AgendaDayView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AgendaTimelineView.xaml.cs">
       <DependentUpon>AgendaTimelineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AgendaUserView.xaml.cs">
+      <DependentUpon>AgendaUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\AgendaDay.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilitys\Converter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -127,7 +139,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AgendaAppointmentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AgendaDayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\AgendaTimelineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AgendaUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

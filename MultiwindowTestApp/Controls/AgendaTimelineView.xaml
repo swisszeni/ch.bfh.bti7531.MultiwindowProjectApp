@@ -24,7 +24,7 @@
     <TextBlock Grid.Row="1" Grid.Column="1" Text="RZE" TextAlignment="Center" />
 
     <ScrollViewer  VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="Green" Grid.ColumnSpan="2">
-        <Grid x:Name="TimeGrid" >
+        <Grid x:Name="TimeGrid" Height="4000" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,12 +28,21 @@ namespace MultiwindowTestApp.Controls
 
         private void CreateTimeRows()
         {
+            Brush borderBrush = new SolidColorBrush(Colors.Gray);
             for(int i = 0; i < 96;  i++)
             {
                 RowDefinition rowDefinition = new RowDefinition();
                 rowDefinition.Height = new GridLength(1, GridUnitType.Star);
 
                 TimeGrid.RowDefinitions.Add(rowDefinition);
+
+                Border separatorLine = new Border();
+                separatorLine.BorderThickness = new Thickness(0, 0, 0, 1);
+                separatorLine.BorderBrush = borderBrush;
+
+                TimeGrid.Children.Add(separatorLine);
+                Grid.SetRow(separatorLine, i);
+                Grid.SetColumnSpan(separatorLine, 2);
             }
 
         }

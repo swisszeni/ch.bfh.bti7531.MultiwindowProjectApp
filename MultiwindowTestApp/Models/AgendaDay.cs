@@ -10,6 +10,11 @@ namespace MultiwindowTestApp.Models
     public class AgendaDay
     {
         public DateTime Date { get; set; }
-        public Dictionary<string, ObservableCollection<Appointment>> AppointmentsPerUser { get; set; }
+        public Dictionary<string, ObservableCollection<Appointment>> AppointmentsPerUser { get; private set; }
+
+        public AgendaDay()
+        {
+            AppointmentsPerUser = new Dictionary<string, ObservableCollection<Appointment>>();
+        }
     }
 }

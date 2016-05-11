@@ -16,8 +16,8 @@
     </Grid.Resources>
 
     <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
+        <RowDefinition Height="25" />
+        <RowDefinition Height="25" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
@@ -26,10 +26,9 @@
         <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-    <TextBlock Grid.Row="0" Grid.Column="1" Text="10.05.2016" TextAlignment="Center" />
-    <TextBlock Grid.Row="1" Grid.Column="1" Text="RZE" TextAlignment="Center" />
+    <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
 
-    <ScrollViewer  VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.ColumnSpan="2">
+    <ScrollViewer x:Name="ContentScroll" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.ColumnSpan="2">
         <Grid x:Name="TimeGrid" Height="2880" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <!--<ColumnDefinition Width="{Binding TimestampWidth, Converter={StaticResource GridLengthConverter}}"/>-->

@@ -123,7 +123,12 @@ namespace MultiwindowTestApp.Controls
 
         private void FillContentGrid()
         {
+            foreach(AgendaDay day in agendaDays)
+            {
+                AgendaDayView dayView = new AgendaDayView(day);
 
+                ContentGrid.Children.Add(dayView);
+            }
         }
 
         private void AdjustHeaderGrid(int numOfColumns)

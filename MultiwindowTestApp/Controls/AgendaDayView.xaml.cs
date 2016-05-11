@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultiwindowTestApp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,13 +14,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace MultiwindowTestApp.Controls
 {
-    public sealed partial class AgendaDayView : UserControl
+    public sealed partial class AgendaDayView : Grid
     {
         public AgendaDayView()
+        {
+            this.InitializeComponent();
+        }
+
+        public AgendaDayView(AgendaDay day)
         {
             this.InitializeComponent();
         }

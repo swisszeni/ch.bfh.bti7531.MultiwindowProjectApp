@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace MultiwindowTestApp.Models
 {
-    public class AgendaDay
+    public class UserAgendaDay
     {
         public DateTime Date { get; set; }
-        public Dictionary<string, ObservableCollection<Appointment>> AppointmentsPerUser { get; private set; }
+        public User User { get; set; }
+        public ObservableCollection<Appointment> Appointments { get; set; }
 
-        public AgendaDay()
+        public UserAgendaDay()
         {
-            AppointmentsPerUser = new Dictionary<string, ObservableCollection<Appointment>>();
+            Appointments = new ObservableCollection<Appointment>();
         }
     }
 }

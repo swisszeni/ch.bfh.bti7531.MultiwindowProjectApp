@@ -17,7 +17,7 @@
 
         <CommandBar Grid.Row="0"/>
 
-        <controls:AgendaTimelineView x:Name="AgendaTimeline" Grid.Row="1" />
+        <controls:AgendaView x:Name="AgendaTimeline" Grid.Row="1" />
 
         <CommandBar Grid.Row="2" />
     </Grid>

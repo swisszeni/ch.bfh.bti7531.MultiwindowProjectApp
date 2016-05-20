@@ -11,46 +11,26 @@
     d:DesignWidth="400">
 
     <Grid.Resources>
-        <x:Double x:Key="TimestampWidth">40</x:Double>
         <utilitys:GridLengthConverter x:Key="GridLengthConverter" />
+        <LinearGradientBrush x:Key="HorizontalDashedBrush" StartPoint="0,0" EndPoint="12,0"
+                         SpreadMethod="Repeat" MappingMode="Absolute">
+            <GradientStop Color="Transparent" Offset="0" />
+            <GradientStop Color="Transparent" Offset="0.499" />
+            <GradientStop Color="{StaticResource SystemBaseLowColor}" Offset="0.5" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="HorizontalDottedBrush" StartPoint="0,0" EndPoint="4,0"
+                         SpreadMethod="Repeat" MappingMode="Absolute">
+            <GradientStop Color="Transparent" Offset="0" />
+            <GradientStop Color="Transparent" Offset="0.799" />
+            <GradientStop Color="{StaticResource SystemBaseLowColor}" Offset="0.5" />
+        </LinearGradientBrush>
     </Grid.Resources>
 
-    <Grid.RowDefinitions>
-        <RowDefinition Height="25" />
-        <RowDefinition Height="25" />
-        <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="40"/>
-        <ColumnDefinition Width="*"/>
+        <!--<ColumnDefinition Width="{Binding TimestampWidth, Converter={StaticResource GridLengthConverter}}"/>-->
+        <ColumnDefinition Width="{Binding Source={StaticResource TimestampWidth}, Converter={StaticResource GridLengthConverter}}"/>
+        <ColumnDefinition />
     </Grid.ColumnDefinitions>
 
-    <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
 
-    <ScrollViewer x:Name="ContentScroll" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.ColumnSpan="2">
-        <Grid x:Name="TimeGrid" Height="2880" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <!--<ColumnDefinition Width="{Binding TimestampWidth, Converter={StaticResource GridLengthConverter}}"/>-->
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <LinearGradientBrush x:Key="HorizontalDashedBrush" StartPoint="0,0" EndPoint="12,0"
-                         SpreadMethod="Repeat" MappingMode="Absolute">
-                    <GradientStop Color="Transparent" Offset="0" />
-                    <GradientStop Color="Transparent" Offset="0.499" />
-                    <GradientStop Color="{StaticResource SystemBaseLowColor}" Offset="0.5" />
-                </LinearGradientBrush>
-                <LinearGradientBrush x:Key="HorizontalDottedBrush" StartPoint="0,0" EndPoint="4,0"
-                         SpreadMethod="Repeat" MappingMode="Absolute">
-                    <GradientStop Color="Transparent" Offset="0" />
-                    <GradientStop Color="Transparent" Offset="0.799" />
-                    <GradientStop Color="{StaticResource SystemBaseLowColor}" Offset="0.5" />
-                </LinearGradientBrush>
-            </Grid.Resources>
-
-            <Grid x:Name="ContentGrid" Grid.Column="1" />
-        </Grid>
-    </ScrollViewer>
 </Grid>

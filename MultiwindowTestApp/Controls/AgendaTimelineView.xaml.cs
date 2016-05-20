@@ -28,12 +28,12 @@ namespace MultiwindowTestApp.Controls
         private Brush dottedBorderBrush;
         private Brush timeStampBrush;
 
-        private List<AgendaDay> agendaDays;
-        public List<AgendaDay> AgendaDays {
+        private List<UserAgendaDay> agendaDays;
+        public List<UserAgendaDay> AgendaDays {
             get { return this.agendaDays; }
             set {
                 this.agendaDays = value;
-                FillView();
+                //FillView();
             }
         }
 
@@ -42,8 +42,8 @@ namespace MultiwindowTestApp.Controls
             this.InitializeComponent();
 
             filledBorderBrush = (Brush)Resources["SystemControlForegroundBaseLowBrush"];
-            dashedBorderBrush = (Brush)TimeGrid.Resources["HorizontalDashedBrush"];
-            dottedBorderBrush = (Brush)TimeGrid.Resources["HorizontalDottedBrush"];
+            dashedBorderBrush = (Brush)Resources["HorizontalDashedBrush"];
+            dottedBorderBrush = (Brush)Resources["HorizontalDottedBrush"];
             timeStampBrush = (Brush)Resources["ButtonDisabledForegroundThemeBrush"];
 
             CreateTimeRows();
@@ -58,11 +58,11 @@ namespace MultiwindowTestApp.Controls
                 RowDefinition rowDefinition = new RowDefinition();
                 rowDefinition.Height = new GridLength(1, GridUnitType.Star);
 
-                TimeGrid.RowDefinitions.Add(rowDefinition);
+                RowDefinitions.Add(rowDefinition);
 
                 Border separatorLine = new Border();
 
-                TimeGrid.Children.Add(separatorLine);
+                Children.Add(separatorLine);
                 Grid.SetRow(separatorLine, i);
                 Grid.SetColumn(separatorLine, 1);
 
@@ -94,172 +94,172 @@ namespace MultiwindowTestApp.Controls
                     timeStamp.HorizontalAlignment = HorizontalAlignment.Right;
                     timeStamp.Margin = timeStampMargin;
 
-                    TimeGrid.Children.Add(timeStamp);
+                    Children.Add(timeStamp);
                     Grid.SetRow(timeStamp, i);
                 }
             }
         }
 
-        private void AdjustContentGrid()
-        {
-            int numOfDays = AgendaDays.Count;
+        //private void AdjustContentGrid()
+        //{
+        //    int numOfDays = AgendaDays.Count;
 
-            if(ContentGrid.ColumnDefinitions.Count < numOfDays)
-            {
-                while(ContentGrid.ColumnDefinitions.Count < numOfDays)
-                {
-                    ColumnDefinition colDefinition = new ColumnDefinition();
-                    colDefinition.Width = new GridLength(1, GridUnitType.Star);
-                    ContentGrid.ColumnDefinitions.Add(colDefinition);
-                }
-            } else if(ContentGrid.ColumnDefinitions.Count > numOfDays)
-            {
-                while(ContentGrid.ColumnDefinitions.Count > numOfDays)
-                {
-                    ContentGrid.ColumnDefinitions.RemoveAt(ContentGrid.ColumnDefinitions.Count -1);
-                }
-            }
-        }
+        //    if(ContentGrid.ColumnDefinitions.Count < numOfDays)
+        //    {
+        //        while(ContentGrid.ColumnDefinitions.Count < numOfDays)
+        //        {
+        //            ColumnDefinition colDefinition = new ColumnDefinition();
+        //            colDefinition.Width = new GridLength(1, GridUnitType.Star);
+        //            ContentGrid.ColumnDefinitions.Add(colDefinition);
+        //        }
+        //    } else if(ContentGrid.ColumnDefinitions.Count > numOfDays)
+        //    {
+        //        while(ContentGrid.ColumnDefinitions.Count > numOfDays)
+        //        {
+        //            ContentGrid.ColumnDefinitions.RemoveAt(ContentGrid.ColumnDefinitions.Count -1);
+        //        }
+        //    }
+        //}
 
-        private void FillContentGrid()
-        {
-            foreach(AgendaDay day in agendaDays)
-            {
-                AgendaDayView dayView = new AgendaDayView(day);
+        //private void FillContentGrid()
+        //{
+        //    foreach(AgendaDay day in agendaDays)
+        //    {
+        //        AgendaDayView dayView = new AgendaDayView(day);
 
-                ContentGrid.Children.Add(dayView);
-            }
-        }
+        //        ContentGrid.Children.Add(dayView);
+        //    }
+        //}
 
-        private void AdjustHeaderGrid(int numOfColumns)
-        {
-            if (ColumnDefinitions.Count < numOfColumns)
-            {
-                while (ColumnDefinitions.Count < numOfColumns)
-                {
-                    ColumnDefinition colDefinition = new ColumnDefinition();
-                    colDefinition.Width = new GridLength(1, GridUnitType.Star);
-                    ColumnDefinitions.Add(colDefinition);
-                }
-            }
-            else if (ColumnDefinitions.Count > numOfColumns)
-            {
-                while (ColumnDefinitions.Count > numOfColumns)
-                {
-                    ColumnDefinitions.RemoveAt(ContentGrid.ColumnDefinitions.Count - 1);
-                }
-            }
+        //private void AdjustHeaderGrid(int numOfColumns)
+        //{
+        //    if (ColumnDefinitions.Count < numOfColumns)
+        //    {
+        //        while (ColumnDefinitions.Count < numOfColumns)
+        //        {
+        //            ColumnDefinition colDefinition = new ColumnDefinition();
+        //            colDefinition.Width = new GridLength(1, GridUnitType.Star);
+        //            ColumnDefinitions.Add(colDefinition);
+        //        }
+        //    }
+        //    else if (ColumnDefinitions.Count > numOfColumns)
+        //    {
+        //        while (ColumnDefinitions.Count > numOfColumns)
+        //        {
+        //            ColumnDefinitions.RemoveAt(ContentGrid.ColumnDefinitions.Count - 1);
+        //        }
+        //    }
 
-            Grid.SetColumnSpan(ContentScroll, numOfColumns);
-        }
+        //    Grid.SetColumnSpan(ContentScroll, numOfColumns);
+        //}
 
 
-        private void FillHeaderGrid(int numOfUsersShown)
-        {
-            int iDay = 1;
+        //private void FillHeaderGrid(int numOfUsersShown)
+        //{
+        //    int iDay = 1;
 
-            foreach (AgendaDay day in agendaDays)
-            {
-                Border dayHeaderBack = new Border();
-                dayHeaderBack.BorderBrush = filledBorderBrush;
+        //    foreach (AgendaDay day in agendaDays)
+        //    {
+        //        Border dayHeaderBack = new Border();
+        //        dayHeaderBack.BorderBrush = filledBorderBrush;
 
-                // special border for the last element
-                if (day == agendaDays.Last())
-                {
-                    dayHeaderBack.BorderThickness = new Thickness(0, 0, 0, 1);
-                }
-                else
-                {
-                    dayHeaderBack.BorderThickness = new Thickness(0, 0, 2, 1);
-                }
+        //        // special border for the last element
+        //        if (day == agendaDays.Last())
+        //        {
+        //            dayHeaderBack.BorderThickness = new Thickness(0, 0, 0, 1);
+        //        }
+        //        else
+        //        {
+        //            dayHeaderBack.BorderThickness = new Thickness(0, 0, 2, 1);
+        //        }
 
-                TextBlock dayHeader = new TextBlock();
-                dayHeader.Text = day.Date.ToString("d");
-                dayHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                dayHeader.VerticalAlignment = VerticalAlignment.Top;
-                dayHeader.Foreground = timeStampBrush;
-                dayHeader.Margin = new Thickness(0, 4, 0, 0);
+        //        TextBlock dayHeader = new TextBlock();
+        //        dayHeader.Text = day.Date.ToString("d");
+        //        dayHeader.HorizontalAlignment = HorizontalAlignment.Center;
+        //        dayHeader.VerticalAlignment = VerticalAlignment.Top;
+        //        dayHeader.Foreground = timeStampBrush;
+        //        dayHeader.Margin = new Thickness(0, 4, 0, 0);
 
-                // special indicator id the date is today
-                if(day.Date == DateTime.Today)
-                {
-                    Rectangle todayIndicator = new Rectangle();
-                    todayIndicator.Height = 4;
-                    todayIndicator.Fill = (Brush)Resources["SystemControlHighlightAccentBrush"];
-                    todayIndicator.VerticalAlignment = VerticalAlignment.Top;
+        //        // special indicator id the date is today
+        //        if(day.Date == DateTime.Today)
+        //        {
+        //            Rectangle todayIndicator = new Rectangle();
+        //            todayIndicator.Height = 4;
+        //            todayIndicator.Fill = (Brush)Resources["SystemControlHighlightAccentBrush"];
+        //            todayIndicator.VerticalAlignment = VerticalAlignment.Top;
 
-                    StackPanel dayHeaderStack = new StackPanel();
-                    dayHeaderStack.Orientation = Orientation.Vertical;
+        //            StackPanel dayHeaderStack = new StackPanel();
+        //            dayHeaderStack.Orientation = Orientation.Vertical;
 
-                    dayHeaderStack.Children.Add(todayIndicator);
-                    dayHeaderStack.Children.Add(dayHeader);
-                    dayHeader.Margin = new Thickness(0, 0, 0, 0);
+        //            dayHeaderStack.Children.Add(todayIndicator);
+        //            dayHeaderStack.Children.Add(dayHeader);
+        //            dayHeader.Margin = new Thickness(0, 0, 0, 0);
 
-                    dayHeaderBack.Child = dayHeaderStack;
-                } else
-                {
-                    dayHeaderBack.Child = dayHeader;
-                }
+        //            dayHeaderBack.Child = dayHeaderStack;
+        //        } else
+        //        {
+        //            dayHeaderBack.Child = dayHeader;
+        //        }
 
-                Children.Add(dayHeaderBack);
-                Grid.SetRow(dayHeaderBack, 0);
-                Grid.SetColumn(dayHeaderBack, iDay);
-                Grid.SetRowSpan(dayHeaderBack, 2);
-                Grid.SetColumnSpan(dayHeaderBack, numOfUsersShown);
+        //        Children.Add(dayHeaderBack);
+        //        Grid.SetRow(dayHeaderBack, 0);
+        //        Grid.SetColumn(dayHeaderBack, iDay);
+        //        Grid.SetRowSpan(dayHeaderBack, 2);
+        //        Grid.SetColumnSpan(dayHeaderBack, numOfUsersShown);
 
-                int iUsr = 0;
-                foreach(string user in day.AppointmentsPerUser.Keys)
-                {
-                    Border usrHeaderBack = new Border();
-                    usrHeaderBack.BorderBrush = (Brush)Resources["SystemControlHighlightAccentBrush"];
-                    usrHeaderBack.BorderThickness = new Thickness(0, 0, 0, 4);
+        //        int iUsr = 0;
+        //        foreach(string user in day.AppointmentsPerUser.Keys)
+        //        {
+        //            Border usrHeaderBack = new Border();
+        //            usrHeaderBack.BorderBrush = (Brush)Resources["SystemControlHighlightAccentBrush"];
+        //            usrHeaderBack.BorderThickness = new Thickness(0, 0, 0, 4);
                     
 
-                    TextBlock usrHeader = new TextBlock();
-                    usrHeader.Text = user;
-                    usrHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                    usrHeader.Foreground = timeStampBrush;
+        //            TextBlock usrHeader = new TextBlock();
+        //            usrHeader.Text = user;
+        //            usrHeader.HorizontalAlignment = HorizontalAlignment.Center;
+        //            usrHeader.Foreground = timeStampBrush;
 
-                    usrHeaderBack.Child = usrHeader;
-                    Children.Add(usrHeaderBack);
-                    Grid.SetRow(usrHeaderBack, 1);
-                    Grid.SetColumn(usrHeaderBack, iDay + iUsr);
+        //            usrHeaderBack.Child = usrHeader;
+        //            Children.Add(usrHeaderBack);
+        //            Grid.SetRow(usrHeaderBack, 1);
+        //            Grid.SetColumn(usrHeaderBack, iDay + iUsr);
 
-                    iUsr++;
-                }
+        //            iUsr++;
+        //        }
 
 
-                iDay = iDay + numOfUsersShown;
-            }
-        }
+        //        iDay = iDay + numOfUsersShown;
+        //    }
+        //}
 
-        private void FillView()
-        {
-            // breaking condition for the errorcase that we have no agendadays
-            if (agendaDays.Count == 0)
-            {
-                return;
-            }
+        //private void FillView()
+        //{
+        //    // breaking condition for the errorcase that we have no agendadays
+        //    if (agendaDays.Count == 0)
+        //    {
+        //        return;
+        //    }
 
-            // If column count doesn't match the amount of days, adjust the grid
-            if (ContentGrid.ColumnDefinitions.Count != agendaDays.Count)
-            {
-                AdjustContentGrid();
-            }
+        //    // If column count doesn't match the amount of days, adjust the grid
+        //    if (ContentGrid.ColumnDefinitions.Count != agendaDays.Count)
+        //    {
+        //        AdjustContentGrid();
+        //    }
 
-            // calculate the amount of different header columns needed and if necessary, adjust the grid
-            // For this operation we assume, that for every day the entrys for same ammount of users is shown
-            int numOfUsersShown = agendaDays.First().AppointmentsPerUser.Count;
-            int headerColumnsNeeded = agendaDays.Count * numOfUsersShown + 1;
-            headerColumnsNeeded = headerColumnsNeeded < 2 ? 2 : headerColumnsNeeded;
-            if (ColumnDefinitions.Count != headerColumnsNeeded)
-            {
-                AdjustHeaderGrid(headerColumnsNeeded);
-            }
+        //    // calculate the amount of different header columns needed and if necessary, adjust the grid
+        //    // For this operation we assume, that for every day the entrys for same ammount of users is shown
+        //    int numOfUsersShown = agendaDays.First().AppointmentsPerUser.Count;
+        //    int headerColumnsNeeded = agendaDays.Count * numOfUsersShown + 1;
+        //    headerColumnsNeeded = headerColumnsNeeded < 2 ? 2 : headerColumnsNeeded;
+        //    if (ColumnDefinitions.Count != headerColumnsNeeded)
+        //    {
+        //        AdjustHeaderGrid(headerColumnsNeeded);
+        //    }
 
-            FillHeaderGrid(numOfUsersShown);
+        //    FillHeaderGrid(numOfUsersShown);
 
-            FillContentGrid();
-        }
+        //    FillContentGrid();
+        //}
     }
 }

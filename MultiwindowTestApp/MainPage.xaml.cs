@@ -28,26 +28,26 @@ namespace MultiwindowTestApp
         {
             this.InitializeComponent();
 
-            List<AgendaDay> mockupData = new List<AgendaDay>();
+            List<UserAgendaDay> mockupData = new List<UserAgendaDay>();
 
-            AgendaDay day1 = new AgendaDay();
-            day1.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
-            day1.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
-            day1.Date = new DateTime(2016,05,11);
-            AgendaDay day2 = new AgendaDay();
-            day2.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
-            day2.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
-            day2.Date = new DateTime(2016, 05, 12);
-            AgendaDay day3 = new AgendaDay();
-            day3.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
-            day3.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
-            day3.Date = new DateTime(2016, 05, 13);
+            //UserAgendaDay day1 = new UserAgendaDay();
+            //day1.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
+            //day1.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
+            //day1.Date = new DateTime(2016,05,11);
+            //UserAgendaDay day2 = new UserAgendaDay();
+            //day2.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
+            //day2.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
+            //day2.Date = new DateTime(2016, 05, 12);
+            //UserAgendaDay day3 = new UserAgendaDay();
+            //day3.AppointmentsPerUser.Add("RZE", new ObservableCollection<Appointment>());
+            //day3.AppointmentsPerUser.Add("RKR", new ObservableCollection<Appointment>());
+            //day3.Date = new DateTime(2016, 05, 13);
 
-            mockupData.Add(day1);
-            mockupData.Add(day2);
-            mockupData.Add(day3);
+            //mockupData.Add(day1);
+            //mockupData.Add(day2);
+            //mockupData.Add(day3);
 
-            AgendaTimeline.AgendaDays = mockupData;
+            // AgendaTimeline.AgendaDays = mockupData;
         }
     }
 }

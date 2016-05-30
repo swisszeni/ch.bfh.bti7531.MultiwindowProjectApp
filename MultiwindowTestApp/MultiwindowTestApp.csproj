@@ -101,9 +101,13 @@
     <Compile Include="Controls\AgendaAppointmentControl.xaml.cs">
       <DependentUpon>AgendaAppointmentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AgendaDayView.xaml.cs">
-      <DependentUpon>AgendaDayView.xaml</DependentUpon>
+    <Compile Include="Controls\AgendaHeaderView.xaml.cs">
+      <DependentUpon>AgendaHeaderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AgendaTimelineDayView.xaml.cs">
+      <DependentUpon>AgendaTimelineDayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AgendaTimelineDayPanel.cs" />
     <Compile Include="Controls\AgendaTimelineView.xaml.cs">
       <DependentUpon>AgendaTimelineView.xaml</DependentUpon>
     </Compile>
@@ -147,7 +151,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AgendaDayView.xaml">
+    <Page Include="Controls\AgendaHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AgendaTimelineDayView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

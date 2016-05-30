@@ -27,7 +27,6 @@
     </Grid.Resources>
 
     <Grid.ColumnDefinitions>
-        <!--<ColumnDefinition Width="{Binding TimestampWidth, Converter={StaticResource GridLengthConverter}}"/>-->
         <ColumnDefinition Width="{Binding Source={StaticResource TimestampWidth}, Converter={StaticResource GridLengthConverter}}"/>
         <ColumnDefinition />
     </Grid.ColumnDefinitions>

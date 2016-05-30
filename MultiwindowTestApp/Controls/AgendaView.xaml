@@ -30,6 +30,11 @@
         <local:AgendaTimelineView x:Name="TimeGrid" Height="2880" VerticalAlignment="Top">
             <Grid x:Name="ContentGrid" Grid.Column="1" />
             <!--https://blogs.msdn.microsoft.com/mim/2013/04/16/winrt-create-a-custom-itemspanel-for-an-itemscontrol/-->
+            <!--https://blogs.msdn.microsoft.com/mim/2013/03/19/create-a-custom-user-control-using-xaml-and-c-for-windows-8/-->
+            <!--http://blog.scottlogic.com/2010/11/15/using-a-grid-as-the-panel-for-an-itemscontrol.html-->
+            <!--https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.itemscontrol.aspx-->
+            <!--https://msdn.microsoft.com/en-us/windows/uwp/layout/custom-panels-overview-->
+            <!--http://www.guruumeditation.net/en/create-a-panel-to-give-all-gridview-items-the-maximum-widthheight-2/-->
         </local:AgendaTimelineView>
     </ScrollViewer>
 </Grid>
